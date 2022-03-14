@@ -46,6 +46,7 @@ services:
       && /wait-for-it.sh postgres:5432 -t 10
       && python3 manage.py makemigrations
       && python3 manage.py migrate
+      && python3 manage.py collectstatic
       && gunicorn --bind 0.0.0.0:8000 butfit.wsgi:application"
 
     # 호스트 OS와 컨테이너의 포트를 바인딩
