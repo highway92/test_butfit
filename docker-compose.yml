@@ -10,7 +10,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
     ports:
-      - "80:80"
+      - "80:80/tcp"
     depends_on:
       - django
   postgres:
@@ -46,11 +46,6 @@ services:
       && /wait-for-it.sh postgres:5432 -t 10
       && python3 manage.py migrate
       && gunicorn --bind 0.0.0.0:8000 butfit.wsgi:application"
-
-    # 호스트 OS와 컨테이너의 포트를 바인딩
-    # && python3 manage.py migrate
-    #   && python3 manage.py runserver
-
     ports:
       - "8000:8000"
     # 호스트 OS에 포트를 공개하지 않고 컨테이너만 포트를 공개 (현재는 주석)
