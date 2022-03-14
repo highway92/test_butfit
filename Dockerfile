@@ -16,7 +16,7 @@ RUN apt-get install -y net-tools
 RUN apt-get install -y dnsutils
 RUN apt-get update
 
-ENV PYTHONUNBUFFERED 0
+ENV PYTHONUNBUFFERED 1
 COPY . /home/butfit
 
 WORKDIR /home/butfit
