@@ -66,7 +66,7 @@ INSTALLED_APPS = [
 AUTH_USER_MODEL = 'member.User'
 
 CRONJOBS = [
-    # ('*/1 * * * *', 'member.cron.crontab_every_minute', '>> '+os.path.join(BASE_DIR, 'config/log/cron.log')+' 2>&1 '),
+    ('0 0 12 * *', 'member.cron.delete_expired', '>> '+os.path.join(BASE_DIR, 'config/log/cron.log')+' 2>&1 '),
     ]
 
 MIDDLEWARE = [
